@@ -3,10 +3,7 @@ package com.test.exkafka.controller;
 import com.test.exkafka.service.KafkaProducerService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Log4j2
 @RestController
@@ -25,6 +22,11 @@ public class KafkaPublisherController {
     ){
         log.info("message: {}", message);
         this.kafkaProducer.sendMessage(message);
+        return "ok";
+    }
+
+    @GetMapping
+    public String healthCheck(){
         return "ok";
     }
 }

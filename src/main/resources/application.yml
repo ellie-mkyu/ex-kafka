@@ -4,9 +4,18 @@ spring:
       bootstrap-servers: localhost:9092
       group-id: test
       auto-offset-reset: earliest
+      enable-auto-commit: true
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
     producer:
       bootstrap-servers: localhost:9092
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    template:
+      default-topic: "chat"
+logging:
+  level:
+    root: "info"
+    org.springframework.web: "debug"
+    org.hibernate: "info"
+    org.springframework.web.socket: "error"
